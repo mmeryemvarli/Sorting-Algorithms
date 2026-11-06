@@ -1,39 +1,35 @@
 # Sorting Algorithms Benchmark
 
-A small Python project that measures and compares the running time of four sorting algorithms on random lists of increasing size.
+A small Python project that measures, compares, and visualizes the running time of various sorting algorithms on random lists and datasets of increasing size.
 
 # Algorithms
 
-| Algorithm | Time Complexity | Idea |
+| Algorithm | Time Complexity (Best / Avg / Worst) | Idea / Approach |
 |---|---|---|
-| Selection Sort | O(n²) | Repeatedly picks the smallest remaining element and puts it in place |
-| Insertion Sort | O(n²) | Inserts each element into the already sorted left part |
-| Bubble Sort | O(n²) | Swaps neighbouring elements until the largest "bubbles up" to the end |
-| Merge Sort | O(n log n) | Splits the list in half recursively, then merges the sorted halves |
+| **Selection Sort** | O(n²) / O(n²) / O(n²) | Repeatedly picks the smallest remaining element and puts it in place |
+| **Insertion Sort** | O(n) / O(n²) / O(n²) | Inserts each element into the already sorted left part |
+| **Bubble Sort** | O(n) / O(n²) / O(n²) | Swaps neighbouring elements until the largest "bubbles up" to the end |
+| **Merge Sort** | O(n log n) / O(n log n) / O(n log n) | Splits the list in half recursively, then merges the sorted halves |
+| **Comb Sort** | O(n log n) / O(n² / 2ᵖ) / O(n²) | Improves on Bubble Sort by using a shrinking gap size to eliminate small values at the end |
+| **Counting Sort** | O(n + k) / O(n + k) / O(n + k) | Non-comparison algorithm that counts occurrences of each unique value (for integers/discrete ranges) |
+| **Radix Sort** | O(d * (n + k)) / O(d * (n + k)) / O(d * (n + k)) | Non-comparison algorithm that sorts numbers digit-by-digit from least to most significant |
+| **Bucket Sort** | O(n + k) / O(n + k) / O(n²) | Distributes elements into buckets, sorts each bucket individually (e.g. using Insertion Sort), and concatenates them |
 
 # How it works
 
-1. For each list size (100, 250, 500, 1000, 1500, 2000), a random list is generated.
-2. Every algorithm sorts a copy of the same list, so the comparison is fair.
-3. Each measurement is repeated 3 times and averaged (`time.perf_counter()` is used for timing).
-4. Results are printed as a table and saved as a chart.
+1. Generates random datasets or arrays of various sizes.
+2. Every algorithm sorts a copy of the exact same dataset to ensure a fair comparison.
+3. Non-comparison algorithms (Counting, Radix, Bucket Sort) process suitable integer/range inputs efficiently.
+4. Measurements are repeated and averaged using `time.perf_counter()`.
+5. Results are printed in the console and saved as visual graphs.
 
-# Results
+# Getting Started
 
-![Sorting algorithms speed comparison](sort_graph.png)
+Requirements: Python 3 and matplotlib.
 
-Example output for n = 2000 (times vary by computer):
-
-| Algorithm | Time (s) |
-|---|---|
-| Merge Sort | ~0.003 |
-| Selection Sort | ~0.064 |
-| Insertion Sort | ~0.064 |
-| Bubble Sort | ~0.165 |
-
-- Merge Sort is by far the fastest, and the gap grows as the list gets larger.
-- Bubble Sort is the slowest because it performs many more swaps than the other O(n²) algorithms.
-- Selection and Insertion Sort perform almost the same on random data.
+```bash
+pip install -r requirements.txt
+python sorting-benchmark.py
 
 # Getting started
 
