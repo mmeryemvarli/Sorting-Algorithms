@@ -191,7 +191,7 @@ def print_table(results):
             print(f"{sure:.5f}", end="\t")
         print()
 
-def plot_results(results, filename="sort_graph.png"):
+def plot_results(results, filename="sort_graph1.png"):
     plt.figure(figsize=(10, 6))
     for name in algorithms:
         plt.plot(sizes, results[name], marker="o", label=name)
